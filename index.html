@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Eliza Defley </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <meta name="description" content="Personal Website. LSU Student studying Compuer Science." />
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+
+
+</head>
+
+<body class=index style="background: #f5f5f5;">
+    <ul id="dropdown1" class="dropdown-content ">
+        <li><a href="index.html"> Home</a></li>
+        <li><a href="learn.html" class="learn">Learn </a></li>
+        <li class="divider"></li>
+        <li><a href="connect.html" class="connect">Connect</a></li>
+    </ul>
+    <header id="header" class="page-topbar">
+        <div class="navbar-fixed">
+            <nav role="navigation" style="background:#fafafa;">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="#" class="brand-logo grey-text title ">Hidden Biology</a>
+                    <ul class="right hide-on-med-and-down">
+
+
+                        <li><a class="dropdown-button grey-text" href="#!" data-activates="dropdown1" data-hover="true">Explore<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <!--<li>
+   <a href="#" align = "right" id="lightbulbindex" class="lightbulb"><i class="material-icons white-text">lightbulb_outline</i></a></li>
+
+
+
+
+
+
+
+        </li> -->
+
+                    </ul>
+
+                    <ul id="nav-mobile" class="side-nav">
+                        <br>
+                        <li><a href="learn.html">Learn </a></li>
+                        <li><a href="connect.html">Connect</a></li>
+                        <br>
+                        <!--
+      <a href="#" align = "center" id="lightbulbindex2" class="lightbulb"><i class="material-icons grey-text">lightbulb_outline</i></a>
+        -->
+
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons grey-text">menu</i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <div class="section no-pad-bot animated fadeInDown   " id="index-banner ">
+        <div class="container ">
+
+            <h2 class="center thin"> Hi, We&#8217;re</h2>
+            <h1 class="center">
+
+                <a href="" class="typewrite teal-text text-lighten-3 " data-period="2000" data-type='[ " Hidden Biology.", "Conservitive.", "Responsible.", "Eco Friendly." ]'>
+                    <span class="wrap"></span>
+                </a>
+            </h1>
+            <div class="row center">
+                <img src="images/logo.png" height=" 256px " weight="256px">
+                <h5 class="header thin col s12 "> Thanks for checking out our page. From protecting oceans, conserving ocean life and redusing our carbon footprint, we like to explore. Feel free to do the same. </h5>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <br><br>
+        <p class="center-align"> <a href="resume/greeting.dox" class="waves-effect waves-light btn-large"><i class="material-icons left">file_download</i>Download Inventation</a></p>
+        </center>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    </div>
+
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script>
+        //Materialize.toast('More Content Soon!', 2000);
+
+        var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) {
+                delta /= 2;
+            }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function() {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #80cbc4}";
+            document.body.appendChild(css);
+        };
+    </script>
+
+
+
+</body>
+
+</html>
